@@ -14,6 +14,11 @@ class Series
         number_collection << numbers.slice(index..(index + slice_index))
       end
     end
+    print_slices(number_collection)
     number_collection
+  end
+
+  def print_slices(number_collection)
+    number_collection.each { |set| puts set.join }
   end
 end
