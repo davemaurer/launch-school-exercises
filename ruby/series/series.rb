@@ -1,3 +1,17 @@
+=begin
+Write a program that will take a string of digits and give you all the possible consecutive number series of length n in that string.
+
+For example, the string "01234" has the following 3-digit series:
+
+- 012
+- 123
+- 234
+And the following 4-digit series:
+
+- 0123
+- 1234
+=end
+
 class Series
   attr_reader :numbers
 
