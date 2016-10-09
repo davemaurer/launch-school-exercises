@@ -21,24 +21,24 @@ class Sieve
   end
 
   def primes
-    remove_composites(@range, @range.first)
+    loop_over_range(@range, @range.first)
   end
 
-  def remove_composites(range, current_number)
+  def loop_over_range(range, current_number)
     if current_number > range.last
       range
     else
-      remove_factorials(range, current_number)
+      remove_multiples(range, current_number)
     end
   end
 
-  def remove_factorials(range, current_number)
+  def remove_multiples(range, current_number)
     start = current_number
     current_number += start
     until current_number > range.last
       range.delete current_number if range.include?(current_number)
       current_number = current_number + start
     end
-    remove_composites(range, start.next)
+    loop_over_range(range, start.next)
   end
 end
