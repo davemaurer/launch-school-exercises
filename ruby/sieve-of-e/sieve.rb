@@ -14,15 +14,17 @@ Repeat until you have processed each number in your range. When the algorithm te
 
 class Sieve
   def initialize(number)
-    @range = (2..number).to_a
+    @number = number
+    @range  = (2..number).to_a
   end
 
   def primes
     current_number = 2
-    until current_number > number
+    until current_number > @number
       next_number = current_number + current_number
-      @range.delete next_number if next_number
-      current_number = current_number + 1 if @range.include?(current_number + 1)
+      @range.delete next_number if @range.include?(next_number)
+      current_number = current_number + 1
     end
+    @range
   end
 end
