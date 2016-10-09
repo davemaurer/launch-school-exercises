@@ -22,7 +22,7 @@ class Sieve
     until current_number > number
       next_number = current_number + current_number
       @range.delete next_number if next_number
-      current_number = current_number + 1
+      current_number = current_number + 1 if @range.include?(current_number + 1)
     end
   end
 end
