@@ -13,18 +13,32 @@ Repeat until you have processed each number in your range. When the algorithm te
 =end
 
 class Sieve
+  attr_reader :number
+
   def initialize(number)
     @number = number
     @range  = (2..number).to_a
   end
 
   def primes
-    current_number = 2
-    until current_number > @number
-      next_number = current_number + current_number
-      @range.delete next_number if @range.include?(next_number)
-      current_number = current_number + 1
+    remove_composites(@range, @range.first)
+  end
+
+  def remove_composites(range, current_number)
+    if current_number > range.last
+      range
+    else
+      remove_factorials(range, current_number)
     end
-    @range
+  end
+
+  def remove_factorials(range, current_number)
+    start = current_number
+    current_number += start
+    until current_number > range.last
+      range.delete current_number if range.include?(current_number)
+      current_number = current_number + start
+    end
+    remove_composites(range, start.next)
   end
 end
